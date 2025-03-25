@@ -1,0 +1,84 @@
+{
+  "expo": {
+    "name": "Mohannad Theeb مهند ذيب ",
+    "slug": "mohannad-theeb",
+    "privacy": "unlisted",
+    "version": "1.7.1",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/d1df187c-7012-47da-9ce4-ae055c795ecb"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "buildNumber": "1",
+      "bitcode": false ,
+      "bundleIdentifier": "com.wicombit.mohannadtheep",
+      "supportsTablet": true,
+      "requireFullScreen": true,
+      "infoPlist": {
+        "CFBundleDisplayName": "Mohannad Theeb مهند ذيب",
+        "UIBackgroundModes": [
+          "remote-notification"
+        ]
+      }
+    },
+    "android": {
+      "versionCode": 6,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon2.png",
+        "backgroundColor": "#FFFFFF"
+      },
+      "package": "com.wicombit.mohannadtheep",
+      "intentFilters": [
+        {
+          "action": "VIEW",
+          "data": {
+            "scheme": "whatsapp",
+            "host": "send"
+          },
+          "category": [
+            "BROWSABLE",
+            "DEFAULT"
+          ]
+        }
+      ]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "useFrameworks": "static"
+          },
+          "android": {
+            "compileSdkVersion": 34,
+            "targetSdkVersion": 34,
+            "buildToolsVersion": "34.0.0",
+            "kotlinVersion": "1.6.10"
+          }
+        }
+      ]
+    ],
+    "owner": "mohannadtheeb-org",
+    "extra": {
+      "eas": {
+        "projectId": "d1df187c-7012-47da-9ce4-ae055c795ecb"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    }
+  }
+}

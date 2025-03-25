@@ -1,0 +1,428 @@
+import React, { useRef, useState } from "react";
+import { View, ImageBackground, TouchableOpacity } from "react-native";
+import ColorsApp from '../config/ColorsApp';
+import Styles from "../config/Styles";
+import { LinearGradient } from "expo-linear-gradient";
+import { Text, Button } from "react-native-paper";
+import { Animated } from "react-native";
+import Icon from "react-native-vector-icons/FontAwesome";
+import { Grid, Col, Row } from "react-native-easy-grid";
+import ProgressBar from 'react-native-animated-progress';
+import Languages from "../languages";
+import LanguageContext from "../languages/LanguageContext";
+import ConfigApp from "../config/ConfigApp";
+
+export default function SeventhComponent({ onSelectValue, ...props }) {
+  const scaleValue = useRef(new Animated.Value(1)).current;
+  const [selectedOptions, setSelectedOptions] = useState([]);
+  const contextState = React.useContext(LanguageContext);
+  const language = contextState.language;
+  const Strings = Languages[language].texts;
+  const onChangeScreen = (screen) => {
+    props.navigation.replace(screen);
+  };
+
+  const handlePressIn = (option) => {
+    if (selectedOptions.includes(option)) {
+      setSelectedOptions(selectedOptions.filter((item) => item !== option));
+    } else {
+      setSelectedOptions([...selectedOptions, option]);
+    }
+    Animated.spring(scaleValue, {
+      toValue: 0.98,
+      useNativeDriver: true,
+    }).start();
+    onSelectValue(7, '0');
+ 
+  };
+
+  const handlePressOut = () => {
+    Animated.spring(scaleValue, {
+      toValue: 1,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  return (
+    <>
+      <View style={Styles.componentContainer}>
+        <View style={{ width: '100%', paddingHorizontal: 20 }}>
+          <ProgressBar progress={21} height={5} backgroundColor={ColorsApp.PRIMARY} />
+          <View style={{ display: 'flex', marginVertical: 2, flexDirection: 'row', justifyContent: 'flex-end' }}>
+            <Text style={{ marginBottom: 5, fontSize: 20 }}>7/28  </Text>
+          </View>
+          <View style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <Text style={{ marginBottom: 0, fontSize: 17, fontWeight: '800' }}>{Strings.q6}</Text>
+          </View>
+        </View>
+
+       
+        <View style={[Styles.Customecard, Styles.cardContent2]}>
+          <TouchableOpacity
+            onPressIn={() => handlePressIn(1)}
+            onPressOut={handlePressOut}
+            activeOpacity={1}
+            style={[
+              { transform: [{ scale: scaleValue }] },
+              // Add border style when selected
+              selectedOptions.includes(1) ? Styles.selectedOption : null,
+            ]}
+          >
+            <ImageBackground
+              source={require('../../images/bodypart_1517097903.jpg')}
+              style={Styles.card5_background4}
+              imageStyle={{ borderRadius: 8 }}
+            >
+              <LinearGradient
+                colors={["rgba(0,0,0,0.1)", "rgba(0,0,0,0.7)"]}
+                style={Styles.card5_gradient4}
+              >
+                <Row>
+                  <Col
+                    size={100}
+                    style={{ justifyContent: "center", alignContent: "center" }}
+                  >
+                    <View
+                      style={{
+                        flexDirection: "row",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <View style={Styles.optionContainer}>
+                        <Text numberOfLines={2} style={Styles.card1_title2}>
+                          {Strings.q6a1}
+                        </Text>
+                      </View>
+                      <View style={{ justifyContent: "flex-end", marginTop: 50 }}>
+                        {selectedOptions.includes(1) && (
+                          <View
+                            style={{
+                              position: 'absolute',
+                              bottom: 0,
+                              right: 0,
+                              width: 40,
+                              height: 40,
+                              borderRadius: 20,
+                              backgroundColor: '#C65A42',
+                              justifyContent: 'center',
+                              alignItems: 'center',
+                            }}
+                          >
+                            <Icon name="check" size={24} color="white" />
+                          </View>
+                        )}
+                      </View>
+                    </View>
+                    <View style={Styles.card5_border}></View>
+                  </Col>
+                </Row>
+              </LinearGradient>
+            </ImageBackground>
+          </TouchableOpacity>
+        </View>
+
+        {/* Option 2 */}
+        <View style={[Styles.Customecard, Styles.cardContent]}>
+          <TouchableOpacity
+            onPressIn={() => handlePressIn(2)}
+            onPressOut={handlePressOut}
+            activeOpacity={1}
+            style={[
+              { transform: [{ scale: scaleValue }] },
+              // Add border style when selected
+              selectedOptions.includes(2) ? Styles.selectedOption : null,
+            ]}
+          >
+            <ImageBackground
+              source={require('../../images/bodypart_1517097822.png')}
+              style={Styles.card5_background4}
+              imageStyle={{ borderRadius: 8 }}
+            >
+              <LinearGradient
+                colors={["rgba(0,0,0,0.1)", "rgba(0,0,0,0.7)"]}
+                style={Styles.card5_gradient4}
+              >
+                <Row>
+                  <Col
+                    size={100}
+                    style={{ justifyContent: "center", alignContent: "center" }}
+                  >
+                    <View
+                      style={{
+                        flexDirection: "row",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <View style={Styles.optionContainer}>
+                        <Text numberOfLines={2} style={Styles.card1_title2}>
+                          {Strings.q6a2}
+                        </Text>
+                      </View>
+                      <View style={{ justifyContent: "flex-end", marginTop: 50 }}>
+                        {selectedOptions.includes(2) && (
+                          <View
+                            style={{
+                              position: 'absolute',
+                              bottom: 0,
+                              right: 0,
+                              width: 40,
+                              height: 40,
+                              borderRadius: 20,
+                              backgroundColor: '#C65A42',
+                              justifyContent: 'center',
+                              alignItems: 'center',
+                            }}
+                          >
+                            <Icon name="check" size={24} color="white" />
+                          </View>
+                        )}
+                      </View>
+                    </View>
+                    <View style={Styles.card5_border}></View>
+                  </Col>
+                </Row>
+              </LinearGradient>
+            </ImageBackground>
+          </TouchableOpacity>
+        </View>
+
+        {/* Option 3 */}
+        <View style={[Styles.Customecard, Styles.cardContent]}>
+          <TouchableOpacity
+            onPressIn={() => handlePressIn(3)}
+            onPressOut={handlePressOut}
+            activeOpacity={1}
+            style={[
+              { transform: [{ scale: scaleValue }] },
+              // Add border style when selected
+              selectedOptions.includes(3) ? Styles.selectedOption : null,
+            ]}
+          >
+            <ImageBackground
+              source={require('../../images/bodypart_1517098045.jpg')}
+              style={Styles.card5_background4}
+              imageStyle={{ borderRadius: 8 }}
+            >
+              <LinearGradient
+                colors={["rgba(0,0,0,0.1)", "rgba(0,0,0,0.7)"]}
+                style={Styles.card5_gradient4}
+              >
+                <Row>
+                  <Col
+                    size={100}
+                    style={{ justifyContent: "center", alignContent: "center" }}
+                  >
+                    <View
+                      style={{
+                        flexDirection: "row",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <View style={Styles.optionContainer}>
+                        <Text numberOfLines={2} style={Styles.card1_title2}>
+                          {Strings.q6a3}
+                        </Text>
+                      </View>
+                      <View style={{ justifyContent: "flex-end", marginTop: 50 }}>
+                        {selectedOptions.includes(3) && (
+                          <View
+                            style={{
+                              position: 'absolute',
+                              bottom: 0,
+                              right: 0,
+                              width: 40,
+                              height: 40,
+                              borderRadius: 20,
+                              backgroundColor: '#C65A42',
+                              justifyContent: 'center',
+                              alignItems: 'center',
+                            }}
+                          >
+                            <Icon name="check" size={24} color="white" />
+                          </View>
+                        )}
+                      </View>
+                    </View>
+                    <View style={Styles.card5_border}></View>
+                  </Col>
+                </Row>
+              </LinearGradient>
+            </ImageBackground>
+          </TouchableOpacity>
+        </View>
+
+        {/* Option 4 */}
+        <View style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
+          <View style={[Styles.Customecard2, Styles.cardContent]}>
+            <TouchableOpacity
+              onPressIn={() => handlePressIn(4)}
+              onPressOut={handlePressOut}
+              activeOpacity={1}
+              style={[
+                { transform: [{ scale: scaleValue }] },
+                // Add border style when selected
+                selectedOptions.includes(4) ? Styles.selectedOption : null,
+              ]}
+            >
+              <ImageBackground
+                source={require('../../images/bodypart_1517098193.jpg')}
+                style={Styles.card5_background4}
+                imageStyle={{ borderRadius: 8 }}
+              >
+                <LinearGradient
+                  colors={["rgba(0,0,0,0.1)", "rgba(0,0,0,0.7)"]}
+                  style={Styles.card5_gradient4}
+                >
+                  <Row>
+                    <Col
+                      size={100}
+                      style={{ justifyContent: "center", alignContent: "center" }}
+                    >
+                      <View
+                        style={{
+                          flexDirection: "row",
+                          justifyContent: "space-between",
+                        }}
+                      >
+                        <View style={Styles.optionContainer}>
+                          <Text numberOfLines={2} style={Styles.card1_title2}>
+                            {Strings.q6a4}
+                          </Text>
+                        </View>
+                        <View style={{ justifyContent: "flex-end", marginTop: 50 }}>
+                          {selectedOptions.includes(4) && (
+                            <View
+                              style={{
+                                position: 'absolute',
+                                bottom: 0,
+                                right: 0,
+                                width: 40,
+                                height: 40,
+                                borderRadius: 20,
+                                backgroundColor: '#C65A42',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                              }}
+                            >
+                              <Icon name="check" size={24} color="white" />
+                            </View>
+                          )}
+                        </View>
+                      </View>
+                      <View style={Styles.card5_border}></View>
+                    </Col>
+                  </Row>
+                </LinearGradient>
+              </ImageBackground>
+            </TouchableOpacity>
+          </View>
+
+          {/* Option 5 */}
+          <View style={[Styles.Customecard2, Styles.cardContent]}>
+            <TouchableOpacity
+              onPressIn={() => handlePressIn(5)}
+              onPressOut={handlePressOut}
+              activeOpacity={1}
+              style={[
+                { transform: [{ scale: scaleValue }] },
+                // Add border style when selected
+                selectedOptions.includes(5) ? Styles.selectedOption : null,
+              ]}
+            >
+              <ImageBackground
+                source={require('../../images/bodypart_1519938334.jpg')}
+                style={Styles.card5_background4}
+                imageStyle={{ borderRadius: 8 }}
+              >
+                <LinearGradient
+                  colors={["rgba(0,0,0,0.1)", "rgba(0,0,0,0.7)"]}
+                  style={Styles.card5_gradient4}
+                >
+                  <Row>
+                    <Col
+                      size={100}
+                      style={{ justifyContent: "center", alignContent: "center" }}
+                    >
+                      <View
+                        style={{
+                          flexDirection: "row",
+                          justifyContent: "space-between",
+                        }}
+                      >
+                        <View style={Styles.optionContainer}>
+                          <Text numberOfLines={2} style={Styles.card1_title2}>
+                            {Strings.q6a5}
+                          </Text>
+                        </View>
+                        <View style={{ justifyContent: "flex-end", marginTop: 50 }}>
+                          {selectedOptions.includes(5) && (
+                            <View
+                              style={{
+                                position: 'absolute',
+                                bottom: 0,
+                                right: 0,
+                                width: 40,
+                                height: 40,
+                                borderRadius: 20,
+                                backgroundColor: '#C65A42',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                              }}
+                            >
+                              <Icon name="check" size={24} color="white" />
+                            </View>
+                          )}
+                        </View>
+                      </View>
+                      <View style={Styles.card5_border}></View>
+                    </Col>
+                  </Row>
+                </LinearGradient>
+              </ImageBackground>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </View>
+
+      <View style={Styles.containerButton2}>
+        <Grid>
+          <Col style={{ justifyContent: "center", alignItems: "center" }}>
+            <Button
+              icon={language === 'ar' ? "arrow-right-bold" : "arrow-left-bold"}
+              disabled={false}
+              mode='text'
+              onPress={() => onChangeScreen("FifthComponent")}
+              labelStyle={{ fontSize: 16, fontWeight: "bold" }}
+              contentStyle={{ width: "100%" }}
+              style={{
+                elevation: 0,
+                borderRadius: 100,
+                margin: 6,
+              }}
+            >
+              {Strings.ST127}
+            </Button>
+          </Col>
+
+          <Col style={{ justifyContent: "center", alignItems: "center" }}>
+            <Button
+              disabled={selectedOptions.length === 0}
+              icon={language === 'ar' ? "arrow-left-bold" : "arrow-right-bold"}
+              mode='contained'
+              onPress={() => onChangeScreen("EighthComponent")}
+              labelStyle={{ fontSize: 16, fontWeight: "bold" }}
+              contentStyle={{ width: "100%", flexDirection: "row-reverse" }}
+              style={{
+                elevation: 0,
+                borderRadius: 100,
+                margin: 6,
+              }}
+            >
+              {Strings.ST128}
+            </Button>
+          </Col>
+        </Grid>
+      </View>
+    </>
+  );
+}
